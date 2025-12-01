@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install>
+
+    <!-- Активируем тему (включаем) -->
+    <sql>
+        <![CDATA[
+            INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`)
+            VALUES ('0', 'theme_%name%', 'theme_%name%_status', '1')
+            ON DUPLICATE KEY UPDATE `value` = '1';
+        ]]>
+    </sql>
+
+    <!-- Указываем директорию темы -->
+    <sql>
+        <![CDATA[
+            INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`)
+            VALUES ('0', 'theme_%name%', 'theme_%name%_directory', '%name%')
+            ON DUPLICATE KEY UPDATE `value` = '%name%';
+        ]]>
+    </sql>
+
+    <!-- Указываем тему для всего магазина -->
+    <sql>
+        <![CDATA[
+            INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`)
+            VALUES ('0', 'config', 'config_theme', '%name%')
+            ON DUPLICATE KEY UPDATE `value` = '%name%';
+        ]]>
+    </sql>
+
+    <!-- Привязываем тему к основному магазину (ВАЖНО) -->
+    <sql>
+        <![CDATA[
+            INSERT INTO `oc_theme` (`store_id`, `theme`, `route`)
+            VALUES ('0', '%name%', 'common/home')
+            ON DUPLICATE KEY UPDATE `theme` = '%name%';
+        ]]>
+    </sql>
+
+    <!-- Очищаем кэш -->
+    <clearcache />
+
+</install>
