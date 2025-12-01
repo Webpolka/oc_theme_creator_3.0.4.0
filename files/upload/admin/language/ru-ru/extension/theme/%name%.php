@@ -1,6 +1,6 @@
 <?php
 // Заголовок
-$_['heading_title']                     = '%Name% темы магазина';
+$_['heading_title']                     = '%Name% тема магазина';
 
 // Текст
 $_['text_extension']                    = "Расширения";

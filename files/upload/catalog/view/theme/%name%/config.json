@@ -1,6 +1,6 @@
 {
-  "name": "%Name%",
   "code": "%name%",
+  "name": "%Name%",  
   "description": "OpenCart Start Theme 2025",
   "version": "1.0",
   "author": "WebLegko"
